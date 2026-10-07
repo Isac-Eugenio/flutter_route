@@ -1,39 +1,27 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# flutter_route
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+Um framework leve e de alta performance para gerenciamento dinâmico de rotas no Flutter. Construído com **busca em tempo constante $O(1)$ via HashMap**, rastreamento reativo de estados powered by **Signals**, e desacoplamento total da lógica de navegação da árvore de UI.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+---
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## Recursos (Features)
 
-## Features
+- **Busca Instantânea $O(1)$**: Utiliza HashMaps internos para resolver rotas por `path` ou `alias` em tempo constante.
+- **Navegação por Alias**: Navegue usando identificadores limpos e amigáveis (ex: `'profile_alias'`) em vez de strings de URLs estáticas.
+- **Rastreamento Reativo de Rotas**: Integrado com o `signals_flutter` para acompanhar as rotas `currentRoute` e `previousRoute` reativamente em todo o app.
+- **Navegação Sem `BuildContext`**: Suporte nativo à chave global de navegação (`FlutterRouteContext.pushNamed`, `pop`, etc.).
+- **`NavigatorObserver` Integrado**: Observa eventos de ciclo de vida (`didPush`, `didPop`, `didReplace`) e atualiza os sinais automaticamente.
+- **Zero Boilerplate no MaterialApp**: Expõe callbacks estáticos prontos para conectar direto no `onGenerateRoute`, `onUnknownRoute` e `navigatorObservers`.
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+---
 
-## Getting started
+## Começando
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Adicione o `flutter_route` e o `signals_flutter` no seu arquivo `pubspec.yaml`:
 
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
-```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_route: ^0.0.1
+  signals_flutter: ^0.6.0
